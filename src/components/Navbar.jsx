@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -16,12 +16,13 @@ const Navbar = () => {
 
                 <div className={`nav-elements ${isOpen ? 'active' : ''}`}>
                     <ul>
-                        <li><a href="/" onClick={() => setIsOpen(false)}>Home</a></li>
-                        <li><a href="/order" onClick={() => setIsOpen(false)}>Order</a></li>
-                        <li><a href="/about" onClick={() => setIsOpen(false)}>About</a></li>
-                        <li><a href="/cart" onClick={() => setIsOpen(false)}>Cart</a></li>
-                        <li><a href="/contact" onClick={() => setIsOpen(false)}>Contact</a></li>
-                        <li><a href="/tc" onClick={() => setIsOpen(false)}>T&C</a></li>
+                        <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
+                        <li><Link to="/order" onClick={() => setIsOpen(false)}>Order</Link></li>
+                        <li><Link to="/services" onClick={() => setIsOpen(false)}>Services</Link></li>
+                        <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
+                        <li><Link to="/cart" onClick={() => setIsOpen(false)}>Cart</Link></li>
+                        <li><Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link></li>
+                        <li><Link to="/tc" onClick={() => setIsOpen(false)}>T&C</Link></li>
                     </ul>
                 </div>
 

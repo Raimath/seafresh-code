@@ -1,20 +1,21 @@
-import { useState } from 'react'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
+import Home from './components/Home'
+import Order from './components/Order'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <Navbar />
-      <main className="container">
-        <section className=" section hero">
-          <h1>Premium Prawns, Delivered Fresh.</h1>
-          <p>Experience the finest selection of ocean-fresh prawns delivered straight from the coast to your kitchen.</p>
-          <button className="btn-primary">Order Now</button>
-        </section>
-      </main>
+      <HashRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/order" element={<Order />} />
+
+        </Routes>
+      </HashRouter>
     </>
   )
 }
