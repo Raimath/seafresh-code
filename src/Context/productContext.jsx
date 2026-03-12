@@ -7,7 +7,7 @@ const ContextProvider = ({ children }) => {
     const [products, setProducts] = useState(productsData)
     useEffect(() => {
         setProducts(productsData)
-        console.log(productsData)
+        // console.log(productsData)
     }, [])
     return (<Context.Provider value={products}>
         {children}

@@ -34,18 +34,7 @@ const originalSlides = [
     },
 ];
 
-/*
-  Build an extended track for infinite looping:
-  [ clone-of-LAST | slide1 | slide2 | slide3 | clone-of-FIRST ]
-  
-  We start at index 1 (real slide 1).
-  
-  Going next from index 3 (slide3) → move to index 4 (clone-of-first),
-  then instantly (no transition) jump to index 1 (real slide1).
-  
-  Going prev from index 1 (slide1) → move to index 0 (clone-of-last),
-  then instantly jump to index 3 (real slide3).
-*/
+
 const extendedSlides = [
     { ...originalSlides[originalSlides.length - 1], _key: 'clone-last' },
     ...originalSlides.map(s => ({ ...s, _key: `real-${s.id}` })),

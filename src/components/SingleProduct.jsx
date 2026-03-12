@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Context } from '../Context/productContext'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { SuggestedProducts } from './SuggestedProducts'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 export const SingleProduct = () => {
     const { id } = useParams()
@@ -19,7 +23,7 @@ export const SingleProduct = () => {
     }, [id, products])
 
     const handleCart = (productid) => {
-        alert("Product added to cart (Demo Only)")
+        // alert("Product added to cart (Demo Only)")
     }
 
     if (!productdata.id) {
@@ -35,7 +39,7 @@ export const SingleProduct = () => {
     return (
         <>
             <section className=" section product-section">
-                <div className="container flex" >
+                <div className="container products-container  flex" >
                     <div className='single-product-container product-container'>
                         <div className='product-images flex'>
                             <div className="main-image">
@@ -58,9 +62,10 @@ export const SingleProduct = () => {
                                 ))}
                             </div>
 
-                            <div className='buttons'>
-                                <input className='buy-button' type='button' value='Add to Cart' onClick={() => handleCart(id)} />
-                                <input className='buy-button' type='button' value='Buy Now' onClick={() => alert('Order Placed! (Demo)')} />
+                            <div className='buy-buttons'>
+                                <Link to="tel:+917019750802" className='buy-button call-btn' type='button' ><FontAwesomeIcon icon={faPhone} size='2xl' /> order now</Link>
+                                <Link to={`mailto:raimathofficial@gmail.com?subject=Order%20Alert&body=Item:%20${productdata.title}%0APrice:%20Rs.${productdata.price}%0AWeight:%20${productdata.weight}%0ASize:%20${productdata.size}`} className='buy-button mail-btn' type='button' ><FontAwesomeIcon icon={faEnvelope} size='2xl' /> order now</Link>
+                                <Link to={`https://wa.me/919353880091?text=Order%20Alert!%0A Item:%20${productdata.title}%0APrice:%20Rs.${productdata.price}%0AWeight:%20${productdata.weight}%0ASize:%20${productdata.size}%0AAddress:`} className='buy-button whatsapp-btn' type='button' ><FontAwesomeIcon icon={faWhatsapp} size='2xl' /> order now</Link>
                             </div>
                         </div>
                         <div className='product-content'>
@@ -94,6 +99,7 @@ export const SingleProduct = () => {
                     </div>
                 </div>
             </section>
+            <SuggestedProducts size={productdata.size} weight={productdata.weight} id={id} />
         </>
     )
 }

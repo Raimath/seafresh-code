@@ -7,7 +7,7 @@ const Hero = () => {
             <section className=" container hero">
                 <h1>Premium Prawns, Delivered Fresh.</h1>
                 <p>Experience the finest selection of ocean-fresh prawns delivered straight from the coast to your kitchen.</p>
-                <motion.div className='service-box flex '
+                <motion.div className=' flex '
                     initial={{ y: 100, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: false }}
